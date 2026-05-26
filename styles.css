@@ -219,7 +219,7 @@ h4 {
   margin: 0 auto;
   padding: 110px 28px;
 }
-.section-alt {
+.section.section-alt {
   background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
   max-width: 100%;
   padding-left: 0;
@@ -234,7 +234,6 @@ h4 {
 }
 .section-head {
   margin-bottom: 56px;
-  max-width: 720px;
 }
 .eyebrow {
   font-family: var(--font-sans);
