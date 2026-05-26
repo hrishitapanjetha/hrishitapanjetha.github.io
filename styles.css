@@ -67,6 +67,7 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
   background-image: radial-gradient(
       1200px 600px at 80% -10%,
       rgba(135, 168, 120, 0.08),
@@ -220,17 +221,19 @@ h4 {
   padding: 110px 28px;
 }
 .section.section-alt {
-  background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
-  max-width: 100%;
-  padding-left: 0;
-  padding-right: 0;
+  position: relative;
+  isolation: isolate;
 }
-.section-alt > * {
-  max-width: var(--maxw);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 28px;
-  padding-right: 28px;
+.section.section-alt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc((100% - 100vw) / 2);
+  width: 100vw;
+  background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 .section-head {
   margin-bottom: 56px;
@@ -950,7 +953,6 @@ h4 {
   }
 
   .section { padding: 80px 22px; }
-  .section-alt > * { padding-left: 22px; padding-right: 22px; }
   .hero { padding: 60px 22px 60px; }
   .section-head { margin-bottom: 40px; }
 
